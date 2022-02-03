@@ -17,7 +17,7 @@ function App () {
     const english = "ABCDEFGHIJKLMNOPQRSTUVWXYZ$%^&*@_"
     const numbers = "1234567890"
     for (let i = 0; i < encode.length; i++) {
-        if (encode[i] === '?' || encode[i] === ',' || encode[i] === '.' || encode[i] === ' ') {
+        if (encode[i] === '?' || encode[i] === ',' || encode[i] === '.' || encode[i] === ' '|| encode[i] === '(' || encode[i] === ')') {
             encodeRes.push(encode[i])
         }
         for (let b = 0; b < russian.length; b++) {
@@ -32,7 +32,7 @@ function App () {
         }
     }
     for (let i = 0; i < decode.length; i++) {
-        if (decode[i] === '?' || decode[i] === ',' || decode[i] === '.' || decode[i] === ' ') {
+        if (decode[i] === '?' || decode[i] === ',' || decode[i] === '.' || decode[i] === ' '|| decode[i] === '(' || decode[i] === ')') {
             decodeRes.push(decode[i])
         }
         for (let b = 0; b < english.length; b++) {
