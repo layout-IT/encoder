@@ -17,7 +17,7 @@ function App () {
     const english = "ABCDEFGHIJKLMNOPQRSTUVWXYZ$%^&*@_"
     const numbers = "1234567890"
     for (let i = 0; i < encode.length; i++) {
-        if (encode[i] === '?' || encode[i] === ',' || encode[i] === '.' || encode[i] === ' '|| encode[i] === '(' || encode[i] === ')') {
+        if (encode[i] === '?' || encode[i] === ',' || encode[i] === '.' || encode[i] === ' ' || encode[i] === '(' || encode[i] === ')') {
             encodeRes.push(encode[i])
         }
         for (let b = 0; b < russian.length; b++) {
@@ -26,13 +26,13 @@ function App () {
             }
         }
         for (let c = 0; c < numbers.length; c++) {
-            if (encode[i]=== numbers[c]) {
+            if (encode[i] === numbers[c]) {
                 encodeRes.push(encode[i])
             }
         }
     }
     for (let i = 0; i < decode.length; i++) {
-        if (decode[i] === '?' || decode[i] === ',' || decode[i] === '.' || decode[i] === ' '|| decode[i] === '(' || decode[i] === ')') {
+        if (decode[i] === '?' || decode[i] === ',' || decode[i] === '.' || decode[i] === ' ' || decode[i] === '(' || decode[i] === ')') {
             decodeRes.push(decode[i])
         }
         for (let b = 0; b < english.length; b++) {
@@ -41,24 +41,31 @@ function App () {
             }
         }
         for (let c = 0; c < numbers.length; c++) {
-            if (decode[i]=== numbers[c]) {
+            if (decode[i] === numbers[c]) {
                 decodeRes.push(decode[i])
             }
         }
     }
-
+    console.log(decode)
+    console.log(encode)
     return (
         <div className={s.App}>
-            <div className={s.encodedText}>
-                <textarea className={s.textarea} placeholder={'Закодировать'} onChange={(e) => encodeFunc(e)}></textarea>
-                <p className={s.text}>{encodeRes}</p>
+            <div className={s.container}>
+                <div className={s.encodedText}>
+                    <textarea className={s.textarea} placeholder={'Закодировать'} value={encode}
+                              onChange={(e) => encodeFunc(e)}></textarea>
+                    <p className={s.text}>{encodeRes}</p>
+                </div>
+                <button onClick={()=> setEncode('')}>Очистить</button>
             </div>
-
-            <div className={s.encodedText}>
-                <textarea className={s.textarea} placeholder={'Раскодировать'} onChange={(e) => decodeFunc(e)}></textarea>
-                <p className={s.text}>{decodeRes}</p>
+            <div className={s.container}>
+                <div className={s.encodedText}>
+                <textarea className={s.textarea} placeholder={'Раскодировать'} value={decode}
+                          onChange={(e) => decodeFunc(e)}></textarea>
+                    <p className={s.text}>{decodeRes}</p>
+                </div>
+                <button onClick={()=>setDecode('') }>Очистить</button>
             </div>
-
         </div>
     );
 }
